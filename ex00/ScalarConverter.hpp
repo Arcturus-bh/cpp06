@@ -6,7 +6,7 @@
 /*   By: aldalmas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:20:58 by aldalmas          #+#    #+#             */
-/*   Updated: 2025/04/03 14:05:47 by aldalmas         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:44:07 by aldalmas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <cmath>
+#include <iomanip>
 
 class ScalarConverter {
     private:
@@ -44,6 +45,8 @@ void displayNegInf(void);
 void displayChar(const char* converted);
 void displayInteger(int converted);
 void displayFloat(float converted);
-void checkFloatDisplay(float converted);
 void displayDouble(double converted);
-void checkDoubleDisplay(double converted);
+void checkCharFDisplay(float converted);
+void checkCharDDisplay(double converted);
+void printFloatDouble(float value);
+void printDoubleFloat(double value);

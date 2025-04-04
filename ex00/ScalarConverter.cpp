@@ -6,7 +6,7 @@
 /*   By: aldalmas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:58:33 by aldalmas          #+#    #+#             */
-/*   Updated: 2025/04/03 14:06:46 by aldalmas         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:45:44 by aldalmas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,48 +99,32 @@ void displayChar(const char* converted) {
 void displayInteger(int converted) {
     std::cout << GREEN "Integer detected" << RESET << std::endl;
     char c = converted;
-    if (!std::isprint(converted))
+    if (!std::isprint(c))
         std::cout << "char: Non displayable" << std::endl;
     else
         std::cout << "char: " << c << std::endl;
     std::cout << "int: " << converted << std::endl;
-    std::cout << "float: " << static_cast<float>(converted) << ".0f" << std::endl;
-    std::cout << "double: " << static_cast<double>(converted) << ".0" << std::endl;
+    std::cout << "float: " << static_cast<float>(converted) << "f" << std::endl;
+    std::cout << "double: " << static_cast<double>(converted) << std::endl;
 }
 
 void displayFloat(float converted) {
     std::cout << GREEN "Float detected" << RESET << std::endl;
-    char c = converted;
-    if (!std::isprint(converted))
-        std::cout << "char: Non displayable" << std::endl;
+    checkCharFDisplay(converted);
+    if (static_cast<double>(converted) > INT_MAX || static_cast<double>(converted) < INT_MIN)
+        std::cout << "int: impossible" << std::endl;
     else
-        std::cout << "char: " << c << std::endl;
-    std::cout << "int: " << static_cast<int>(converted) << std::endl;
-    //
-    checkFloatDisplay(converted);
-    checkDoubleDisplay(converted);
+        std::cout << "int: " << static_cast<int>(converted) << std::endl;
+    printFloatDouble(converted);
 }
 
 void displayDouble(double converted) {
-    char c = static_cast<int>(converted);
     std::cout << GREEN "Double detected" << RESET << std::endl;
-    std::cout << "char: "<< c << std::endl;   
-    std::cout << "int: " << static_cast<int>(converted) << std::endl;
-    //
-    checkFloatDisplay(converted);
-    checkDoubleDisplay(converted);
+    checkCharDDisplay(converted);
+    if (static_cast<double>(converted) > INT_MAX || static_cast<double>(converted) < INT_MIN)
+        std::cout << "int: impossible" << std::endl;
+    else
+        std::cout << "int: " << static_cast<int>(converted) << std::endl;
+    printDoubleFloat(converted);
 }
 
-void checkFloatDisplay(float converted) {
-    if (converted == static_cast<int>(converted))
-        std::cout << "float: " << converted << ".0f" << std::endl;
-    else
-        std::cout << "float: " << converted << "f" << std::endl;
-}
-
-void checkDoubleDisplay(double converted) {
-    if (converted == static_cast<int>(converted))
-        std::cout << "double: " << converted << ".0" << std::endl;
-    else
-        std::cout << "double: " << converted << std::endl;
-}

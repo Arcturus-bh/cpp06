@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   displayFunction.cpp                                :+:      :+:    :+:   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldalmas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 15:45:25 by aldalmas          #+#    #+#             */
-/*   Updated: 2025/04/04 15:45:56 by aldalmas         ###   ########.fr       */
+/*   Updated: 2025/04/05 20:49:21 by aldalmas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
+void checkChar(char c) {
+    if (c >= 0 && c < 32)
+        std::cout << "char: Non displayable" << std::endl;
+    else if (c < 0 || c > 126)
+        std::cout << "char: impossible" << std::endl;
+    else
+        std::cout << "char: " << c << std::endl;
+}
+
 void checkCharFDisplay(float converted) {
     char c = static_cast<int>(converted);
-    if (!std::isprint(c))
+    if (c >= 0 && c < 32)
         std::cout << "char: Non displayable" << std::endl;
+    else if (c < 0 || c > 126)
+        std::cout << "char: impossible" << std::endl;
     else
         std::cout << "char: " << c << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: aldalmas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:20:58 by aldalmas          #+#    #+#             */
-/*   Updated: 2025/04/04 15:44:07 by aldalmas         ###   ########.fr       */
+/*   Updated: 2025/04/05 20:50:17 by aldalmas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <cstring>
 #include <stdlib.h>
 #include <limits.h>
+#include <limits>
 #include <cmath>
 #include <iomanip>
 
@@ -46,6 +47,9 @@ void displayChar(const char* converted);
 void displayInteger(int converted);
 void displayFloat(float converted);
 void displayDouble(double converted);
+
+
+void checkChar(char c);
 void checkCharFDisplay(float converted);
 void checkCharDDisplay(double converted);
 void printFloatDouble(float value);

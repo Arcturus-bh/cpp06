@@ -1,8 +1,7 @@
-NAME = ex00
+NAME = ex01
 
 SRC = main.cpp \
-	  ScalarConverter.cpp \
-	  utils.cpp \
+	  Serializer.cpp \
 
 OBJ = $(SRC:.cpp=.o)
 

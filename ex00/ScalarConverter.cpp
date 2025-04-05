@@ -6,7 +6,7 @@
 /*   By: aldalmas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:58:33 by aldalmas          #+#    #+#             */
-/*   Updated: 2025/04/04 15:45:44 by aldalmas         ###   ########.fr       */
+/*   Updated: 2025/04/05 20:51:43 by aldalmas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,16 @@ void ScalarConverter::convert(std::string& litteral) {
 // global function
 void displayNan(void) {
     std::cout << GREEN "nan detected" << RESET << std::endl;
+    
     std::cout << "char: impossible" << std::endl;   
     std::cout << "int: impossible" << std::endl;   
     std::cout << "float: nanf" << std::endl;   
-    std::cout << "double: nan" << std::endl; 
+    std::cout << "double: nan" << std::endl;
 }
 
 void displayInf(void) {
     std::cout << GREEN "+inf detected" << RESET << std::endl;
+    
     std::cout << "char: impossible" << std::endl;   
     std::cout << "int: impossible" << std::endl;   
     std::cout << "float: +inff" << std::endl;   
@@ -81,6 +83,7 @@ void displayInf(void) {
 
 void displayNegInf(void) {
     std::cout << GREEN "-inf detected" << RESET << std::endl;
+    
     std::cout << "char: impossible" << std::endl;   
     std::cout << "int: impossible" << std::endl;   
     std::cout << "float: -inff" << std::endl;   
@@ -89,29 +92,31 @@ void displayNegInf(void) {
 
 void displayChar(const char* converted) {
     std::cout << GREEN "Char detected" << RESET << std::endl;
-    char c = converted[0];
-    std::cout << "char: " << converted[0] << std::endl;
-    std::cout << "int: " << static_cast<int>(c) << std::endl;
-    std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-    std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+
+    checkChar(converted[0]);
+    std::cout << "int: " << static_cast<int>(converted[0]) << std::endl;
+    std::cout << "float: " << static_cast<float>(converted[0]) << ".0f" << std::endl;
+    std::cout << "double: " << static_cast<double>(converted[0]) << ".0" << std::endl;
 }
 
 void displayInteger(int converted) {
     std::cout << GREEN "Integer detected" << RESET << std::endl;
+    
     char c = converted;
-    if (!std::isprint(c))
-        std::cout << "char: Non displayable" << std::endl;
+    checkChar(c);
+    if (std::numeric_limits<int>::max() || std::numeric_limits<int>::min())
+        std::cout << "int: impossible" << std::endl;
     else
-        std::cout << "char: " << c << std::endl;
-    std::cout << "int: " << converted << std::endl;
+        std::cout << "int: " << static_cast<int>(converted) << std::endl;
     std::cout << "float: " << static_cast<float>(converted) << "f" << std::endl;
     std::cout << "double: " << static_cast<double>(converted) << std::endl;
 }
 
 void displayFloat(float converted) {
     std::cout << GREEN "Float detected" << RESET << std::endl;
+    
     checkCharFDisplay(converted);
-    if (static_cast<double>(converted) > INT_MAX || static_cast<double>(converted) < INT_MIN)
+    if (std::numeric_limits<float>::max() || std::numeric_limits<float>::min())
         std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << static_cast<int>(converted) << std::endl;
@@ -121,10 +126,9 @@ void displayFloat(float converted) {
 void displayDouble(double converted) {
     std::cout << GREEN "Double detected" << RESET << std::endl;
     checkCharDDisplay(converted);
-    if (static_cast<double>(converted) > INT_MAX || static_cast<double>(converted) < INT_MIN)
+    if (std::numeric_limits<double>::max() || std::numeric_limits<double>::min())
         std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << static_cast<int>(converted) << std::endl;
     printDoubleFloat(converted);
 }
-

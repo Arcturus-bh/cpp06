@@ -6,7 +6,7 @@
 /*   By: aldalmas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:20:58 by aldalmas          #+#    #+#             */
-/*   Updated: 2025/04/05 20:50:17 by aldalmas         ###   ########.fr       */
+/*   Updated: 2025/04/08 23:47:13 by aldalmas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,12 @@ void displayFloat(float converted);
 void displayDouble(double converted);
 
 
-void checkChar(char c);
+void checkChar(std::string& litteral);
+void checkInt(std::string& litteral);
+void checkFloat(float value);
+void checkDouble(double value);
+
+// --------------------------------------
 void checkCharFDisplay(float converted);
 void checkCharDDisplay(double converted);
 void printFloatDouble(float value);
